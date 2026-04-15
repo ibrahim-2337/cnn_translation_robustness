@@ -19,15 +19,36 @@ Translation augmentation will increase robustness to spatial shifts. As augmenta
 - `main.py`: Entry point for running the ablation study.
 
 ## Installation
-```bash
-pip install -r requirements.txt
-```
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ibrahim-2337/cnn_translation_robustness.git
+   cd cnn_translation_robustness
+   ```
+
+2. **Create a virtual environment (optional but recommended):**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
+
 To run the full experiment grid (6 conditions):
 ```bash
 python main.py
 ```
+
+### What happens when you run `main.py`?
+1. **Data Loading**: The CIFAR-10 dataset is automatically downloaded and processed with the appropriate translation augmentation level.
+2. **Model Training**: Six different models are trained, corresponding to each experimental condition (MaxPool vs. AvgPool for 0px, 2px, and 4px augmentation).
+3. **Evaluation**: After training each model, it is evaluated on a series of test sets shifted by 0 to 8 pixels.
+4. **Results**: The training progress and a final "Robustness Score" (mean accuracy across all shifts) are printed for each condition.
 
 ## Results Summary
 - **Augmentation** is the primary driver of translation robustness.
